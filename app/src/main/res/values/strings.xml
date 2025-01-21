@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidKotlin2to4pm</string>
+    <string name="my_text">Welcome</string>
+</resources>
