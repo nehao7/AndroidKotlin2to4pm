@@ -41,5 +41,13 @@
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold|italic"/>
+    <Button
+        android:id="@+id/btnAlertDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alert Dialog"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"/>
 
 </LinearLayout>
