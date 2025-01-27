@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
-import com.o7services.androidkotlin_9_11am.databinding.ActivityAlertDialogBinding
+import com.o7services.androidkotlin2to4pm.databinding.ActivityAlertDialogBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -124,8 +124,9 @@ class AlertDialogActivity : AppCompatActivity() {
                     Log.e("date", "picked Date is $year $month $dateOfMonth")
                     val calendar = Calendar.getInstance()
                     calendar.set(year, month, dateOfMonth)
+                    var datenew=SimpleDateFormat("dd/MMM/YYYY",Locale.getDefault()).format(calendar.time)
                     var formattedDate = simpleDateFormat.format(calendar.time)
-                    binding.btnDatePicker.setText(formattedDate)
+                    binding.btnDatePicker.setText(calendar.time.toString())
                 },
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
