@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import com.o7services.androidkotlin2to4pm.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,6 +38,13 @@ class FragmentOne : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_one, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Button>(R.id.btnnext).setOnClickListener {
+            findNavController().navigate(R.id.fragmentTwo)
+        }
     }
 
     companion object {
