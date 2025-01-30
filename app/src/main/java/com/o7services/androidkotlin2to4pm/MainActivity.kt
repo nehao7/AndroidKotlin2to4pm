@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.o7services.androidkotlin2to4pm.databinding.ActivityMainBinding
+import com.o7services.androidkotlin2to4pm.jetpack_nav_package.BaseActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         }
          binding.btnAlertDialog.setOnClickListener {
             var intent=Intent(this,AlertDialogActivity::class.java)
+            startActivity(intent)
+        }
+ binding.btnNavScreen.setOnClickListener {
+            var intent=Intent(this,BaseActivity::class.java)
             startActivity(intent)
         }
 
