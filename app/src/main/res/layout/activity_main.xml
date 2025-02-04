@@ -16,15 +16,15 @@
         android:textSize="40sp"
         android:textStyle="italic|bold"
         android:textColor="@color/blue"
-        android:text="Hello World!"
-   />
-  <EditText
-      android:id="@+id/edt1"
+        android:text="Hello World!" />
+
+    <EditText
+        android:id="@+id/edt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/my_text"
-      android:textSize="20sp"
-      />
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/btnClick"
         android:layout_width="match_parent"
@@ -32,7 +32,8 @@
         android:text="Click"
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic" />
+
     <Button
         android:id="@+id/btnImplicit"
         android:layout_width="match_parent"
@@ -40,7 +41,8 @@
         android:text="Implicit Intent"
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic" />
+
     <Button
         android:id="@+id/btnAlertDialog"
         android:layout_width="match_parent"
@@ -48,14 +50,31 @@
         android:text="Alert Dialog"
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
-        android:textStyle="bold|italic"/>
- <Button
+        android:textStyle="bold|italic" />
+
+    <Button
         android:id="@+id/btnNavScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jetpack Navigation"
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic" />
+ <Button
+        android:id="@+id/btnSpinnerScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Spinner Activity"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+ <Button
+        android:id="@+id/btnListScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List Activity"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
 
 </LinearLayout>
