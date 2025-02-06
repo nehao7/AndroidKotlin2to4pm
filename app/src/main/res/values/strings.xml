@@ -5,6 +5,10 @@
     <string name="fragment_two">Fragment Two</string>
     <string name="fragment_one">Fragment One</string>
 
+    <string name="to_do_items">To do Items</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+
     <string-array name="gender">
         <item name="select">Select your gender</item>
         <item name="male">Male</item>
