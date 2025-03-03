@@ -1,4 +1,4 @@
-package com.o7services.androidkotlin_9_11am.list_package
+package com.o7services.androidkotlin2to4pm.list_package
 
 data class Student(
     var rollNo : Int?= 0,

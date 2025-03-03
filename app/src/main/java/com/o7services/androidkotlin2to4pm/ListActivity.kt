@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.o7services.androidkotlin_9_11am.databinding.ActivityListBinding
+import com.o7services.androidkotlin2to4pm.databinding.ActivityListBinding
 
 class ListActivity : AppCompatActivity() {
     lateinit var binding: ActivityListBinding
@@ -31,6 +31,7 @@ class ListActivity : AppCompatActivity() {
         binding.listView .adapter= arrayAdapter
         binding.listView.setOnItemClickListener { parent, view, position, id ->
             Toast.makeText(this@ListActivity,"$position", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@ListActivity,"${parent.getItemAtPosition(position)}", Toast.LENGTH_SHORT).show()
             Log.e(TAG, "${parent.getItemAtPosition(position)}")
         }
         binding.listView.setOnItemLongClickListener { parent, view, position, id ->

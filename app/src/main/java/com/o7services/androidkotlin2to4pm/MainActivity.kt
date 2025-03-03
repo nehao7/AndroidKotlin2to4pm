@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.o7services.androidkotlin2to4pm.databinding.ActivityMainBinding
 import com.o7services.androidkotlin2to4pm.jetpack_nav_package.BaseActivity
+import com.o7services.androidkotlin2to4pm.list_package.ListBaseAdapterActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -55,6 +56,10 @@ class MainActivity : AppCompatActivity() {
         }
     binding.btnSpinnerScreen.setOnClickListener {
             var intent = Intent(this, SpinnerActivity::class.java)
+            startActivity(intent)
+        }
+  binding.btnListBaseAdapter.setOnClickListener {
+            var intent = Intent(this, ListBaseAdapterActivity::class.java)
             startActivity(intent)
         }
 

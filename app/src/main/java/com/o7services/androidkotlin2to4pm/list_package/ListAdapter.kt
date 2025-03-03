@@ -1,4 +1,4 @@
-package com.o7services.androidkotlin_9_11am.list_package
+package com.o7services.androidkotlin2to4pm.list_package
 
 import android.view.LayoutInflater
 import android.view.View
@@ -32,4 +32,7 @@ class ListAdapter(var list : ArrayList<Student>) : BaseAdapter() {
         name.setText(list[position].name)
         return view
     }
+
+
 }
+
