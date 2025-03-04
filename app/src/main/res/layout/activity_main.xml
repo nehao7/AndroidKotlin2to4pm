@@ -84,5 +84,21 @@
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
+<Button
+    android:id="@+id/btnFirebaseRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Firebase Registration"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+<Button
+        android:id="@+id/btnFirestore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Firestore Activity"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
 
 </LinearLayout>
