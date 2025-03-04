@@ -20,7 +20,7 @@ import com.google.firebase.firestore.firestore
 import com.o7services.androidkotlin2to4pm.R
 import com.o7services.androidkotlin2to4pm.databinding.ActivityFirestoreBinding
 
-class FirestoreActivity : AppCompatActivity() {
+class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
     lateinit var binding: ActivityFirestoreBinding
     var categoriesList = arrayListOf<CategoriesListModel>()
     lateinit var categoriesListAdapter: CategoriesListAdapter
@@ -73,7 +73,7 @@ class FirestoreActivity : AppCompatActivity() {
             categoriesListAdapter.notifyDataSetChanged()
         }
 
-        categoriesListAdapter = CategoriesListAdapter(this, categoriesList)
+        categoriesListAdapter = CategoriesListAdapter(this, categoriesList, this)
 //        layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerCategory.layoutManager = LinearLayoutManager(this)
         binding.recyclerCategory.adapter = categoriesListAdapter
@@ -112,6 +112,35 @@ class FirestoreActivity : AppCompatActivity() {
         return index
     }
 
+    override fun delete(position: Int) {
+        categoriesList[position].categoryId?.let {
+            db.collection(collectionName).document(it).delete()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Delete Failed", Toast.LENGTH_SHORT).show()
+
+                }
+
+        }
+    }
+
+    override fun update(position: Int) {
+        categoriesList[position].categoryId?.let {
+                db.collection(collectionName).document(it)
+                    .set(CategoriesListModel(categoryName = "Document Updated"))
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Update Failed ", Toast.LENGTH_SHORT).show()
+
+                    }
+
+        }
+    }
 
 
 }

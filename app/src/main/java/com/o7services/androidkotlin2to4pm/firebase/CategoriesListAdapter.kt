@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.o7services.androidkotlin2to4pm.databinding.CategoryListItemBinding
 
 
-class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<CategoriesListModel>):RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
+class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<CategoriesListModel>, var clickIntrface:onClick):RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: CategoryListItemBinding):RecyclerView.ViewHolder(binding.root) {
 
@@ -27,6 +27,12 @@ class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<Categ
         holder.apply {
             binding.tvcategory.setText(arrayList[position].categoryName)
 
+            binding.imgDelete.setOnClickListener{
+               clickIntrface.delete(position)
+            }
+            binding.tvUpdate.setOnClickListener{
+               clickIntrface.update(position)
+            }
 
 
         }
@@ -36,7 +42,8 @@ class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<Categ
         return arrayList.size
     }
 
-//    interface imageSetting {
-//        fun setImage(position: Int,imageView: ImageView)
-//    }
+    interface onClick {
+        fun delete(position: Int)
+        fun update(position: Int)
+    }
 }
