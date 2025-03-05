@@ -24,7 +24,6 @@ class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
     lateinit var binding: ActivityFirestoreBinding
     var categoriesList = arrayListOf<CategoriesListModel>()
     lateinit var categoriesListAdapter: CategoriesListAdapter
-
     val db = Firebase.firestore
     var collectionName="Users"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,9 @@ class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
 
                 when (snapshot.type) {
                     DocumentChange.Type.ADDED -> {
-                        userModel?.let { categoriesList.add(it) }
+                        userModel?.let {
+                            categoriesList.add(it)
+                        }
                         Log.e("", "userModelList ${categoriesList.size}")
                         Log.e("", "userModelList ${categoriesList}")
 
@@ -74,7 +75,6 @@ class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
         }
 
         categoriesListAdapter = CategoriesListAdapter(this, categoriesList, this)
-//        layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerCategory.layoutManager = LinearLayoutManager(this)
         binding.recyclerCategory.adapter = categoriesListAdapter
 
@@ -94,7 +94,6 @@ class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
         }
 
         }
-
     }
 
     fun convertObject(snapshot: QueryDocumentSnapshot): CategoriesListModel? {
@@ -103,7 +102,6 @@ class FirestoreActivity : AppCompatActivity(), CategoriesListAdapter.onClick {
         categoriesModel?.categoryId = snapshot.id ?: ""
         return categoriesModel
     }
-
     fun getIndex(categoriesModel: CategoriesListModel): Int {
         var index = -1
         index = categoriesList.indexOfFirst { element ->

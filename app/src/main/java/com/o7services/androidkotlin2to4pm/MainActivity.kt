@@ -14,6 +14,7 @@ import com.o7services.androidkotlin2to4pm.firebase.FirebaseAuthentication
 import com.o7services.androidkotlin2to4pm.firebase.FirestoreActivity
 import com.o7services.androidkotlin2to4pm.jetpack_nav_package.BaseActivity
 import com.o7services.androidkotlin2to4pm.list_package.ListBaseAdapterActivity
+import com.o7services.androidkotlin2to4pm.realtimedatabase.RealtimeActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -52,15 +53,15 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
         }
-    binding.btnListScreen.setOnClickListener {
+        binding.btnListScreen.setOnClickListener {
             var intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
-    binding.btnSpinnerScreen.setOnClickListener {
+        binding.btnSpinnerScreen.setOnClickListener {
             var intent = Intent(this, SpinnerActivity::class.java)
             startActivity(intent)
         }
-  binding.btnListBaseAdapter.setOnClickListener {
+        binding.btnListBaseAdapter.setOnClickListener {
             var intent = Intent(this, ListBaseAdapterActivity::class.java)
             startActivity(intent)
         }
@@ -68,8 +69,12 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, FirebaseAuthentication::class.java)
             startActivity(intent)
         }
-binding.btnFirestore.setOnClickListener {
+        binding.btnFirestore.setOnClickListener {
             var intent = Intent(this, FirestoreActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnRealtime.setOnClickListener {
+            var intent = Intent(this, RealtimeActivity::class.java)
             startActivity(intent)
         }
 
