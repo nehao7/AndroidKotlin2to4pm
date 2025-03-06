@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AndroidKotlin2to4pm"
         tools:targetApi="31">
         <activity
+            android:name=".activity_fragment_interaction.BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".firebase.FirestoreActivity"
             android:exported="false" />
         <activity
@@ -20,9 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".firebase.FirebaseAuthentication"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".RecyclerActivity"
             android:exported="false" />

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity_fragment_interaction.InteractionFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We are in Fragment"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"/>
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/btnchangetext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change text of Activity button" />
+
+</LinearLayout>
