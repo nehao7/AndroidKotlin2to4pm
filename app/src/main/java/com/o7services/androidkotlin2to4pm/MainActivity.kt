@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.o7services.androidkotlin2to4pm.activity_fragment_interaction.InteractionBaseActivity
 import com.o7services.androidkotlin2to4pm.databinding.ActivityMainBinding
 import com.o7services.androidkotlin2to4pm.firebase.FirebaseAuthentication
 import com.o7services.androidkotlin2to4pm.firebase.FirestoreActivity
@@ -77,44 +78,48 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, RealtimeActivity::class.java)
             startActivity(intent)
         }
+        binding.btnInteractionActivity.setOnClickListener {
+            var intent = Intent(this, InteractionBaseActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show()
-
-
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Toast.makeText(this, "OnReStart", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show()
-
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show()
+//
+//
+//    }
+//
+//    override fun onRestart() {
+//        super.onRestart()
+//        Toast.makeText(this, "OnReStart", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show()
+//
+//    }
 
 }

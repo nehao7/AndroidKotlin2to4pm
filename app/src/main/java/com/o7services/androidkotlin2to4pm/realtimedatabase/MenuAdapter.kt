@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidkt_2to4_6m.Realtimedatabase.firebase.ClickInterface
+import com.o7services.androidkotlin2to4pm.databinding.AdapterMenuBinding
 
-import com.o7services.androidkotlin_9_11am.databinding.AdapterMenuBinding
 
 class MenuAdapter(var userList:ArrayList<MenuModel>, var clickInterface: ClickInterface
 ): RecyclerView.Adapter<MenuAdapter.ViewHolder>() {

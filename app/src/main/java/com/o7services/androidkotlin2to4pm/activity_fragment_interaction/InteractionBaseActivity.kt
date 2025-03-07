@@ -7,10 +7,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.o7services.androidkotlin2to4pm.R
 import com.o7services.androidkotlin2to4pm.databinding.ActivityBase2Binding
-import com.o7services.androidkotlin2to4pm.databinding.ActivityBaseBinding
 import com.o7services.androidkotlin4_6pmmcpc.fragments.InteractionInterface
 
-class BaseActivity : AppCompatActivity() {
+class InteractionBaseActivity : AppCompatActivity() {
     lateinit var binding:ActivityBase2Binding
     var interactionInterface:InteractionInterface?=null
     override fun onCreate(savedInstanceState: Bundle?) {
