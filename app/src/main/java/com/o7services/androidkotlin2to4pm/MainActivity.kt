@@ -1,12 +1,14 @@
 package com.o7services.androidkotlin2to4pm
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.o7services.androidkotlin2to4pm.activity_fragment_interaction.InteractionBaseActivity
@@ -21,15 +23,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     var button: Button? = null
     var editText: EditText? = null
+    lateinit var sharedPreferences:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedPreferences=getSharedPreferences("Details", MODE_PRIVATE)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        if (sharedPreferences.getBoolean("dark",false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
         Toast.makeText(this, "Oncreate", Toast.LENGTH_SHORT).show()
 //        button=findViewById(R.id.btnClick)
@@ -80,6 +89,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnInteractionActivity.setOnClickListener {
             var intent = Intent(this, InteractionBaseActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnSharedPrefActivity.setOnClickListener {
+            var intent = Intent(this, SharedPrefActivity::class.java)
             startActivity(intent)
         }
 
