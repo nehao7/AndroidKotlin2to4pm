@@ -2,15 +2,20 @@ package com.o7services.androidkotlin2to4pm
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.messaging.FirebaseMessaging
 import com.o7services.androidkotlin2to4pm.activity_fragment_interaction.InteractionBaseActivity
 import com.o7services.androidkotlin2to4pm.databinding.ActivityMainBinding
 import com.o7services.androidkotlin2to4pm.firebase.FirebaseAuthentication
@@ -23,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     var button: Button? = null
     var editText: EditText? = null
+    private val TAG = "FCM Logs"
+
     lateinit var sharedPreferences:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +42,28 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermission()
+            }
+        }
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener{ task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            Log.d(TAG, token)
+//dZUBcVf9RbG0ZSgUDBvFQz:APA91bFA_RTfQXU74eJ_DEeh6Gyy09hVhp8zwfZXwbcu3EyMIKJaMfy4SlHzBNpksdP_DA3-jzWEn4EiM1f6SndsuyF6BMLK09OmisWb6E9hJAxGBgiTths
+//cC2xhZz2RB-w7bEqZ5u1UA:APA91bGQfskGA6pWC4uK8vNUiQ17KPxXlSg0Ek72wf51yYJ1WM3CeCQ2D-bN1V9dR8bOWfZNBWPFifixqCXIFPRfMXSQcQvvDKKppNNsScQowncVqHzLx4U
+        }
+
         if (sharedPreferences.getBoolean("dark",false)){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }else{
@@ -96,6 +125,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+        }
     }
 
 //    override fun onStart() {
