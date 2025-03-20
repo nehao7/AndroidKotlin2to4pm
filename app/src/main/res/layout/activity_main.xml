@@ -128,5 +128,21 @@
         android:backgroundTint="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
+    <Button
+        android:id="@+id/btnWebViewActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WebView Activity"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment Activity"
+        android:backgroundTint="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
 </LinearLayout>
 </ScrollView>

@@ -30,13 +30,13 @@ class MainActivity : AppCompatActivity() {
     var editText: EditText? = null
     private val TAG = "FCM Logs"
 
-    lateinit var sharedPreferences:SharedPreferences
+    lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        sharedPreferences=getSharedPreferences("Details", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("Details", MODE_PRIVATE)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -44,14 +44,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                )
+                != PackageManager.PERMISSION_GRANTED
+            ) {
 
                 requestPermission()
             }
         }
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener{ task ->
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (!task.isSuccessful) {
                 Log.w(TAG, "Fetching FCM registration token failed", task.exception)
             }
@@ -64,9 +68,9 @@ class MainActivity : AppCompatActivity() {
 //cC2xhZz2RB-w7bEqZ5u1UA:APA91bGQfskGA6pWC4uK8vNUiQ17KPxXlSg0Ek72wf51yYJ1WM3CeCQ2D-bN1V9dR8bOWfZNBWPFifixqCXIFPRfMXSQcQvvDKKppNNsScQowncVqHzLx4U
         }
 
-        if (sharedPreferences.getBoolean("dark",false)){
+        if (sharedPreferences.getBoolean("dark", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
         Toast.makeText(this, "Oncreate", Toast.LENGTH_SHORT).show()
@@ -122,6 +126,18 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnSharedPrefActivity.setOnClickListener {
             var intent = Intent(this, SharedPrefActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnSharedPrefActivity.setOnClickListener {
+            var intent = Intent(this, SharedPrefActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnWebViewActivity.setOnClickListener {
+            var intent = Intent(this, WebViewActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnPay.setOnClickListener {
+            var intent = Intent(this, PaymentActivity::class.java)
             startActivity(intent)
         }
 
