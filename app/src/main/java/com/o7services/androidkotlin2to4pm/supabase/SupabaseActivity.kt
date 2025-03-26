@@ -23,7 +23,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.o7services.androidkotlin2to4pm.R
+import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.storage.UploadStatus
+import io.github.jan.supabase.storage.storage
+import io.github.jan.supabase.storage.uploadAsFlow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,6 +38,7 @@ class SupabaseActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 100
     private val MANAGE_EXTERNAL_STORAGE_REQUEST_CODE = 101
     private lateinit var supabaseClient: SupabaseClient
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -162,12 +168,12 @@ class SupabaseActivity : AppCompatActivity() {
                                 val imageUrl = bucket.publicUrl(fileName)
                                 var img: ImageView =findViewById(R.id.img)
 
-                                Glide.with(this@MainActivity)
+                                Glide.with(this@SupabaseActivity)
                                     .load(imageUrl)
                                     .placeholder(R.drawable.ic_launcher_background)
                                     .into(img)
 
-                                Toast.makeText(this@MainActivity, "Upload Successful!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@SupabaseActivity, "Upload Successful!", Toast.LENGTH_SHORT).show()
                             }
 
                         }
@@ -176,7 +182,7 @@ class SupabaseActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.e("Upload", "Error uploading image: ${e.message}")
-                    Toast.makeText(this@MainActivity, "Error uploading image: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SupabaseActivity, "Error uploading image: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
