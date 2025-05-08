@@ -18,6 +18,9 @@
         android:theme="@style/Theme.AndroidKotlin2to4pm"
         tools:targetApi="31">
         <activity
+            android:name=".broadcast_receiver.BroadcastReceiverActivity"
+            android:exported="false" />
+        <activity
             android:name=".supabase.SupabaseActivity"
             android:exported="false" />
         <activity
@@ -87,6 +90,15 @@
             </intent-filter>
         </service>
 
+        <receiver android:name=".broadcast_receiver.Receiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.AIRPLANE_MODE_CHANGED" />
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
         <receiver
             android:name="com.razorpay.RzpTokenReceiver"
             android:exported="true">

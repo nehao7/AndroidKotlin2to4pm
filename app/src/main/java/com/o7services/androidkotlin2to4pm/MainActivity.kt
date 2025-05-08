@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.messaging.FirebaseMessaging
 import com.o7services.androidkotlin2to4pm.activity_fragment_interaction.InteractionBaseActivity
+import com.o7services.androidkotlin2to4pm.broadcast_receiver.BroadcastReceiverActivity
 import com.o7services.androidkotlin2to4pm.databinding.ActivityMainBinding
 import com.o7services.androidkotlin2to4pm.firebase.FirebaseAuthentication
 import com.o7services.androidkotlin2to4pm.firebase.FirestoreActivity
@@ -138,6 +139,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnPay.setOnClickListener {
             var intent = Intent(this, PaymentActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnBroadcast.setOnClickListener {
+            var intent = Intent(this, BroadcastReceiverActivity::class.java)
             startActivity(intent)
         }
 
